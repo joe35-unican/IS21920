@@ -15,7 +15,8 @@ public class Encendida extends AlarmaHogarEstado{
 	public void entryAction(AlarmaHogar context){
 		context.getPiloto().encender();
 		context.activarSensores();
-		context.getChsupp().firePropertyChange("numpad","",1);
+		context.getChsupp().firePropertyChange("numpad","",0);
+		context.getChsupp().firePropertyChange("intrcod","",0);
 	};
 
 }

@@ -8,6 +8,7 @@ public class Apagada extends AlarmaHogarEstado{
 		AlarmaHogarEstado pe = getEstadoEsperandoSalida();
 		context.getPiloto().parpadear();
 		context.getChsupp().firePropertyChange("numpad","",1);
+		context.getChsupp().firePropertyChange("texto","","Activandose");
 		context.setState(pe);
 		pe.entryAction(context);
 		pe.doAction(context);
@@ -18,6 +19,7 @@ public class Apagada extends AlarmaHogarEstado{
 		context.getChsupp().firePropertyChange("texto","","Alarma Apagada");
 		context.getChsupp().firePropertyChange("texto2","","");
 		context.getChsupp().firePropertyChange("numpad","",0);
+		context.getChsupp().firePropertyChange("intrcod","",0);
 		context.getPiloto().apagar();
 		context.setIntentos(0);
 	};

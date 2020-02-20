@@ -39,7 +39,6 @@ public class AlarmaHogar {
 	
 	public void alarmaOn() {
 		state.alarmaOn(this);
-		chsupp.firePropertyChange("texto","","Activandose");
 	}
 	
 	public void alarmaOff(String c) {

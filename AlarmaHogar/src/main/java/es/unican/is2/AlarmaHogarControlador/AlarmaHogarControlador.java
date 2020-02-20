@@ -72,9 +72,6 @@ public class AlarmaHogarControlador implements PropertyChangeListener{
 			case 1:
 				vista.setLed(true);
 				break;
-			case 2:
-				//parpadeo
-				break;
 			default:
 				break;
 			}
@@ -92,6 +89,17 @@ public class AlarmaHogarControlador implements PropertyChangeListener{
 				break;
 			case 1:
 				vista.setNumPadActivado(true);
+			default:
+				break;
+			}
+		}else if (e.getPropertyName().equals("intrcod")) {
+			Integer intrcod = (Integer) e.getNewValue();
+			switch (intrcod) {
+			case 0:
+				vista.setIntrCodigo(false);
+				break;
+			case 1:
+				vista.setIntrCodigo(true);
 			default:
 				break;
 			}
