@@ -1,4 +1,4 @@
-package es.unican.is2.AlarmaHogar;
+package es.unican.is2.AlarmaHogarModelo;
 
 import java.util.TimerTask;
 
@@ -20,8 +20,6 @@ public class EsperandoSalida extends AlarmaHogarEstado{
 	public void entryAction(AlarmaHogar context){
 		
 		// Mover esto al controlador al pulsar On desde estado Apagado
-		context.setNumpadActivado(true);
-		
 		encender = new PasarEncendidoTask(context);
 		temp.schedule(encender, context.getIntervaloSalida());
 	};

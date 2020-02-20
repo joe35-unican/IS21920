@@ -1,4 +1,4 @@
-package es.unican.is2.AlarmaHogar;
+package es.unican.is2.AlarmaHogarModelo;
 
 public class Encendida extends AlarmaHogarEstado{
 	
@@ -15,9 +15,7 @@ public class Encendida extends AlarmaHogarEstado{
 	public void entryAction(AlarmaHogar context){
 		context.getPiloto().encender();
 		context.activarSensores();
-		
-		// Mover al controlador si estado Encendida?
-		context.setNumpadActivado(false);
+		context.getChsupp().firePropertyChange("numpad","",1);
 	};
 
 }

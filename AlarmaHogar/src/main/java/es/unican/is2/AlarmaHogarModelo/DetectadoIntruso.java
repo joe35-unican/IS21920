@@ -1,4 +1,4 @@
-package es.unican.is2.AlarmaHogar;
+package es.unican.is2.AlarmaHogarModelo;
 
 public class DetectadoIntruso extends AlarmaHogarEstado{
 	

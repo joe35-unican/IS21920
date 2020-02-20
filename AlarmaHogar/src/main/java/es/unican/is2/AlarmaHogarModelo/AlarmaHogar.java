@@ -1,10 +1,7 @@
-package es.unican.is2.AlarmaHogar;
+package es.unican.is2.AlarmaHogarModelo;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.Date;
-
-import Vistas.PantallaAlarma;
 
 public class AlarmaHogar {
 	
@@ -15,14 +12,12 @@ public class AlarmaHogar {
 	static final int INTENTOS = 3;
 	private String codigoDesactivacion = "1111";
 	private Piloto piloto;
-	private PantallaAlarma vista;
 	private PropertyChangeSupport chsupp = new PropertyChangeSupport(this);
 	
 
 	
-	public AlarmaHogar(PantallaAlarma vista) {
-		this.vista=vista;
-		this.piloto=new Piloto(vista);
+	public AlarmaHogar() {
+		piloto = new Piloto(this);
 		state = AlarmaHogarEstado.init(this);
 		
 	}
@@ -30,26 +25,21 @@ public class AlarmaHogar {
 	public void notificarCentralita() {
 		chsupp.firePropertyChange("texto","","Señal Centralita");
 		chsupp.firePropertyChange("textosim","","Señal Centralita");
-		//vista.setMensaje("Señal centralita");
-		//vista.getSim().addTexto("Señal Centralita");
 	}
 	
 	public void desactivarSensores() {
 		chsupp.firePropertyChange("texto","","Sensores Desactivados");
 		chsupp.firePropertyChange("textosim","","");
-		//vista.setMensaje("Sensores Desactivados");
 	}
 	
 	public void activarSensores() {
 		chsupp.firePropertyChange("texto","","Sensores Activados");
-		//vista.setMensaje("Sensores Activados");
 		
 	}
 	
 	public void alarmaOn() {
 		state.alarmaOn(this);
 		chsupp.firePropertyChange("texto","","Activandose");
-		//vista.setMensaje("Activandose");
 	}
 	
 	public void alarmaOff(String c) {
@@ -59,8 +49,7 @@ public class AlarmaHogar {
 	public void intruso() {
 		state.intruso(this);
 		chsupp.firePropertyChange("textosim","","Intruso Detectado");
-		//vista.getSim().addTexto("Intruso Detectado");
-		setNumpadActivado(true);
+		chsupp.firePropertyChange("numpad","",1);
 	}
 	
 	public void off() {
@@ -106,24 +95,32 @@ public class AlarmaHogar {
 	}
 	
 	// Mover al controlador todas las llamadas a esta funcion y borrala
-	public void setNumpadActivado(boolean npad) {
-		vista.setNumPadActivado(npad);
-	}
+	//public void setNumpadActivado(boolean npad) {
+		//vista.setNumPadActivado(npad);
+	//}
 	
 	// Se hace con el listener -> Borrar
 	// Comprobar que se pone "" en todos los casos necesarios
-	public void setMen(String s) {
-		vista.setMensaje(s);
-		if (vista.getSim()!=null) {
-			vista.getSim().addTexto("");
-		}
-	}
+	//public void setMen(String s) {
+		//vista.setMensaje(s);
+		//if (vista.getSim()!=null) {
+			//vista.getSim().addTexto("");
+		//}
+	//}
 
 	public int getIntervaloSalida() {
 		// TODO Auto-generated method stub
 		return this.intervaloSalida;
 	}
+	public int getIntervaloDesactivacion() {
+		// TODO Auto-generated method stub
+		return this.intervaloDesactivacion;
+	}
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
 		chsupp.addPropertyChangeListener(listener);
+	}
+
+	public PropertyChangeSupport getChsupp() {
+		return chsupp;
 	}
 }

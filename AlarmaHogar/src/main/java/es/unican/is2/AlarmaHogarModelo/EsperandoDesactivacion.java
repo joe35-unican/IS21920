@@ -1,9 +1,6 @@
-package es.unican.is2.AlarmaHogar;
+package es.unican.is2.AlarmaHogarModelo;
 
 import java.util.TimerTask;
-
-import es.unican.is2.AlarmaHogar.EsperandoSalida.PasarEncendidoTask;
-
 
 public class EsperandoDesactivacion extends AlarmaHogarEstado{
 	
@@ -26,7 +23,7 @@ public class EsperandoDesactivacion extends AlarmaHogarEstado{
 	@Override
 	public void entryAction(AlarmaHogar context){
 		intruso = new IntrusoTask(context);
-		temp.schedule(intruso, context.getIntervaloSalida());
+		temp.schedule(intruso, context.getIntervaloDesactivacion());
 		context.desactivarSensores();
 	};
 
