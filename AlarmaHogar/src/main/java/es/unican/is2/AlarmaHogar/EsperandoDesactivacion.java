@@ -9,7 +9,6 @@ public class EsperandoDesactivacion extends AlarmaHogarEstado{
 	
 	protected IntrusoTask intruso;
 	
-	public void alarmaOn(AlarmaHogar context){};
 	@Override
 	public void alarmaOff(AlarmaHogar context, String c){
 		if (c.equals(context.getCodigo()) && context.getIntentos()<AlarmaHogar.INTENTOS) {
@@ -23,16 +22,14 @@ public class EsperandoDesactivacion extends AlarmaHogarEstado{
 			context.incrementoIntentos();
 		}
 	};
-	public void intruso(AlarmaHogar context){};
-	public void off(AlarmaHogar context){};
+
 	@Override
 	public void entryAction(AlarmaHogar context){
 		intruso = new IntrusoTask(context);
 		temp.schedule(intruso, context.getIntervaloSalida());
 		context.desactivarSensores();
 	};
-	public void exitAction(AlarmaHogar context){};
-	public void doAction(AlarmaHogar context){};
+
 
 	
 public class IntrusoTask extends TimerTask {

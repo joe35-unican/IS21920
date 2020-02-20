@@ -2,9 +2,6 @@ package es.unican.is2.AlarmaHogar;
 
 public class DetectadoIntruso extends AlarmaHogarEstado{
 	
-	public void alarmaOn(AlarmaHogar context){};
-	public void alarmaOff(AlarmaHogar context, String c){};
-	public void intruso(AlarmaHogar context){};
 	@Override
 	public void off(AlarmaHogar context){
 		this.exitAction(context);
@@ -17,7 +14,5 @@ public class DetectadoIntruso extends AlarmaHogarEstado{
 	public void entryAction(AlarmaHogar context){
 		context.notificarCentralita();
 	};
-	public void exitAction(AlarmaHogar context){};
-	public void doAction(AlarmaHogar context){};
 
 }

@@ -5,7 +5,6 @@ import java.util.TimerTask;
 public class EsperandoSalida extends AlarmaHogarEstado{
 	protected PasarEncendidoTask encender;
 	@Override
-	public void alarmaOn(AlarmaHogar context){};
 	public void alarmaOff(AlarmaHogar context,String c){
 		if (c.equals(context.getCodigo())) {
 			this.exitAction(context);
@@ -16,16 +15,16 @@ public class EsperandoSalida extends AlarmaHogarEstado{
 			pe.doAction(context);
 		}
 	};
-	public void intruso(AlarmaHogar context){};
-	public void off(AlarmaHogar context){};
+
 	@Override
 	public void entryAction(AlarmaHogar context){
+		
+		// Mover esto al controlador al pulsar On desde estado Apagado
 		context.setNumpadActivado(true);
+		
 		encender = new PasarEncendidoTask(context);
 		temp.schedule(encender, context.getIntervaloSalida());
 	};
-	public void exitAction(AlarmaHogar context){};
-	public void doAction(AlarmaHogar context){};
 	
 	
 	public class PasarEncendidoTask extends TimerTask {

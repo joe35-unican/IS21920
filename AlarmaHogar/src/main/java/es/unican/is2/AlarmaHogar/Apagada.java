@@ -12,16 +12,17 @@ public class Apagada extends AlarmaHogarEstado{
 		pe.doAction(context);
 	};
 	
-	public void alarmaOff(AlarmaHogar context,String c){};
-	public void intruso(AlarmaHogar context){};
-	public void off(AlarmaHogar context){};
 	@Override
 	public void entryAction(AlarmaHogar context){
 		context.setMen("Alarma Apagada");
+		
+		// Mover esto al controlador al pulsar Off desde centralita 
+		//con estado DetectadoIntruso o Off con codigo correcto y menos 
+		//de 3 intentos con estado EsperandoDesactivacion
 		context.setNumpadActivado(false);
+		
 		context.getPiloto().apagar();
 		context.setIntentos(0);
 	};
-	public void exitAction(AlarmaHogar context){};
-	public void doAction(AlarmaHogar context){};
+
 }

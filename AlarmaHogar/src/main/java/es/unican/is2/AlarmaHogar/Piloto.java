@@ -14,10 +14,13 @@ public class Piloto {
 		}
 		
 		public void encender() {
+			
+			// Cambiar por enviar un mensaje al listener
 			vista.setLed(true);
 		}
 
 		public void apagar() {
+			// Cambiar por enviar un mensaje al listener
 			vista.setLed(false);
 		}
 		

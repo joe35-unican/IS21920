@@ -35,17 +35,21 @@ public class AlarmaHogar {
 	}
 	
 	public void desactivarSensores() {
-		vista.setMensaje("Sensores Desactivados");
+		chsupp.firePropertyChange("texto","","Sensores Desactivados");
+		chsupp.firePropertyChange("textosim","","");
+		//vista.setMensaje("Sensores Desactivados");
 	}
 	
 	public void activarSensores() {
-		vista.setMensaje("Sensores Activados");
+		chsupp.firePropertyChange("texto","","Sensores Activados");
+		//vista.setMensaje("Sensores Activados");
 		
 	}
 	
 	public void alarmaOn() {
 		state.alarmaOn(this);
-		vista.setMensaje("Activandose");
+		chsupp.firePropertyChange("texto","","Activandose");
+		//vista.setMensaje("Activandose");
 	}
 	
 	public void alarmaOff(String c) {
@@ -54,7 +58,8 @@ public class AlarmaHogar {
 	
 	public void intruso() {
 		state.intruso(this);
-		vista.getSim().addTexto("Intruso Detectado");
+		chsupp.firePropertyChange("textosim","","Intruso Detectado");
+		//vista.getSim().addTexto("Intruso Detectado");
 		setNumpadActivado(true);
 	}
 	
@@ -100,10 +105,13 @@ public class AlarmaHogar {
 		return this.nintentos;
 	}
 	
+	// Mover al controlador todas las llamadas a esta funcion y borrala
 	public void setNumpadActivado(boolean npad) {
 		vista.setNumPadActivado(npad);
 	}
 	
+	// Se hace con el listener -> Borrar
+	// Comprobar que se pone "" en todos los casos necesarios
 	public void setMen(String s) {
 		vista.setMensaje(s);
 		if (vista.getSim()!=null) {
