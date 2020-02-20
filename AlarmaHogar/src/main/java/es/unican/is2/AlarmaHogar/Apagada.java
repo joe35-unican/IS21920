@@ -16,6 +16,8 @@ public class Apagada extends AlarmaHogarEstado{
 	public void intruso(AlarmaHogar context){};
 	public void off(AlarmaHogar context){};
 	public void entryAction(AlarmaHogar context){
+		context.setMen("Alarma Apagada");
+		context.setNumpadActivado(false);
 		context.getPiloto().apagar();
 		context.setIntentos(0);
 	};

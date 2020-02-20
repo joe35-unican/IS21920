@@ -12,7 +12,9 @@ public class Encendida extends AlarmaHogarEstado{
 		pe.doAction(context);
 	};
 	public void off(AlarmaHogar context){};
-	public void entryAction(AlarmaHogar context){};
+	public void entryAction(AlarmaHogar context){
+		context.setNumpadActivado(false);
+	};
 	public void exitAction(AlarmaHogar context){
 		context.getPiloto().encender();
 		context.activarSensores();

@@ -15,6 +15,7 @@ public class EsperandoSalida extends AlarmaHogarEstado{
 	public void intruso(AlarmaHogar context){};
 	public void off(AlarmaHogar context){};
 	public void entryAction(AlarmaHogar context){
+		context.setNumpadActivado(true);
 		//TIMER
 	};
 	public void exitAction(AlarmaHogar context){};
