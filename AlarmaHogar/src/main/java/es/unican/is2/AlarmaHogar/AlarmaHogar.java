@@ -1,10 +1,14 @@
 package es.unican.is2.AlarmaHogar;
 
+import java.util.Date;
+
+import Vistas.PantallaAlarma;
+
 public class AlarmaHogar {
 	
 	private AlarmaHogarEstado state;
-	private int intervaloSalida = 10;
-	private	int intervaloDesactivacion = 10;
+	private int intervaloSalida = 10*1000;
+	private	int intervaloDesactivacion = 10*1000;
 	private int nintentos = 0;
 	static final int INTENTOS = 3;
 	private String codigoDesactivacion = "1111";
@@ -22,6 +26,7 @@ public class AlarmaHogar {
 	
 	public void notificarCentralita() {
 		vista.setMensaje("Señal centralita");
+		vista.getSim().addTexto("Señal Centralita");
 	}
 	
 	public void desactivarSensores() {
@@ -44,6 +49,7 @@ public class AlarmaHogar {
 	
 	public void intruso() {
 		state.intruso(this);
+		vista.getSim().addTexto("Intruso Detectado");
 		setNumpadActivado(true);
 	}
 	
@@ -95,5 +101,13 @@ public class AlarmaHogar {
 	
 	public void setMen(String s) {
 		vista.setMensaje(s);
+		if (vista.getSim()!=null) {
+			vista.getSim().addTexto("");
+		}
+	}
+
+	public int getIntervaloSalida() {
+		// TODO Auto-generated method stub
+		return this.intervaloSalida;
 	}
 }

@@ -1,5 +1,7 @@
 package es.unican.is2.AlarmaHogar;
 
+import Vistas.PantallaAlarma;
+
 public class Piloto {
 	private PantallaAlarma vista;
 

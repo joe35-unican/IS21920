@@ -5,6 +5,7 @@ public class DetectadoIntruso extends AlarmaHogarEstado{
 	public void alarmaOn(AlarmaHogar context){};
 	public void alarmaOff(AlarmaHogar context, String c){};
 	public void intruso(AlarmaHogar context){};
+	@Override
 	public void off(AlarmaHogar context){
 		this.exitAction(context);
 		AlarmaHogarEstado pe = getEstadoApagada();
@@ -12,6 +13,7 @@ public class DetectadoIntruso extends AlarmaHogarEstado{
 		pe.entryAction(context);
 		pe.doAction(context);
 	};
+	@Override
 	public void entryAction(AlarmaHogar context){
 		context.notificarCentralita();
 	};

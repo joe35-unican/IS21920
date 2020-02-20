@@ -1,5 +1,7 @@
 package es.unican.is2.AlarmaHogar;
 
+import java.util.Timer;
+
 public abstract class AlarmaHogarEstado {
 	
 	
@@ -8,6 +10,7 @@ public abstract class AlarmaHogarEstado {
 	private static EsperandoSalida estadoEsperandoSalida = new EsperandoSalida();
 	private static EsperandoDesactivacion estadoEsperandoDesactivacion = new EsperandoDesactivacion();
 	private static DetectadoIntruso estadoDetectadoIntruso = new DetectadoIntruso();
+	protected Timer temp = new Timer();
 
 	public static AlarmaHogarEstado init(AlarmaHogar context) {
 		estadoApagada.entryAction(context);
@@ -37,6 +40,5 @@ public abstract class AlarmaHogarEstado {
 	public AlarmaHogarEstado getEstadoDetectadoIntruso() {
 		return estadoDetectadoIntruso;
 	}
-	
 
 }

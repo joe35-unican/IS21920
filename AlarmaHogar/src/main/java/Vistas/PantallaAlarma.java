@@ -1,4 +1,4 @@
-package es.unican.is2.AlarmaHogar;
+package Vistas;
 
 import java.awt.EventQueue;
 
@@ -11,6 +11,9 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+
+import es.unican.is2.AlarmaHogar.AlarmaHogar;
+
 import java.awt.Font;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
@@ -35,6 +38,7 @@ public class PantallaAlarma {
 	JPanel panel = new JPanel();
 	private boolean intrCodigo = false;
 	private static AlarmaHogar alarma;
+	private SimuladorEventos sim;
 	
 
 	/**
@@ -60,6 +64,8 @@ public class PantallaAlarma {
 	public PantallaAlarma() {
 		initialize();
 		alarma=new AlarmaHogar(this);
+		sim = new SimuladorEventos(alarma);
+		
 	}
 
 	/**
@@ -187,5 +193,8 @@ public class PantallaAlarma {
 	public void setNumPadActivado(boolean npad) {
 		// TODO Auto-generated method stub
 		this.numpadactivado=npad;
+	}
+	public SimuladorEventos getSim() {
+		return this.sim;
 	}
 }

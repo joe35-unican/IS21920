@@ -4,6 +4,7 @@ public class Encendida extends AlarmaHogarEstado{
 	
 	public void alarmaOn(AlarmaHogar context){};
 	public void alarmaOff(AlarmaHogar context,String c){};
+	@Override
 	public void intruso(AlarmaHogar context){
 		this.exitAction(context);
 		AlarmaHogarEstado pe = getEstadoEsperandoDesactivacion();
@@ -12,13 +13,14 @@ public class Encendida extends AlarmaHogarEstado{
 		pe.doAction(context);
 	};
 	public void off(AlarmaHogar context){};
+	@Override
 	public void entryAction(AlarmaHogar context){
-		context.setNumpadActivado(false);
-	};
-	public void exitAction(AlarmaHogar context){
 		context.getPiloto().encender();
 		context.activarSensores();
+		context.setNumpadActivado(false);
 	};
+	@Override
+	public void exitAction(AlarmaHogar context){};
 	public void doAction(AlarmaHogar context){};
 
 }
