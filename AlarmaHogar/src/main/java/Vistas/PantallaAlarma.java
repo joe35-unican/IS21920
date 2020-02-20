@@ -21,8 +21,10 @@ import java.awt.Insets;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-public class PantallaAlarma {
+public class PantallaAlarma extends JFrame implements PropertyChangeListener {
 
 	private JFrame frmAlarmaHogar;
 	private int numpadPosY = 65;
@@ -62,6 +64,7 @@ public class PantallaAlarma {
 	 * Create the application.
 	 */
 	public PantallaAlarma() {
+		
 		initialize();
 		alarma=new AlarmaHogar(this);
 		sim = new SimuladorEventos(alarma);
@@ -196,5 +199,30 @@ public class PantallaAlarma {
 	}
 	public SimuladorEventos getSim() {
 		return this.sim;
+	}
+
+	public void propertyChange(PropertyChangeEvent e) {
+		if (e.getPropertyName().equals("piloto")) {
+			Integer piloto = (Integer) e.getNewValue();
+			switch (piloto) {
+			case 0:
+				setLed (false);
+				break;
+			case 1:
+				setLed(true);
+				break;
+			case 2:
+				//parpadeo
+				break;
+			default:
+				break;
+			}
+		}else if (e.getPropertyName().equals("texto")) {
+			String texto = (String) e.getNewValue();
+			setMensaje(texto);
+		}else if (e.getPropertyName().equals("textosim")) {
+			String texto = (String) e.getNewValue();
+			sim.addTexto(texto);
+		}
 	}
 }

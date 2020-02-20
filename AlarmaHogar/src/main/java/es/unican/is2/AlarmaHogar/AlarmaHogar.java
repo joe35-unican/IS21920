@@ -1,5 +1,7 @@
 package es.unican.is2.AlarmaHogar;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.Date;
 
 import Vistas.PantallaAlarma;
@@ -14,6 +16,7 @@ public class AlarmaHogar {
 	private String codigoDesactivacion = "1111";
 	private Piloto piloto;
 	private PantallaAlarma vista;
+	private PropertyChangeSupport chsupp = new PropertyChangeSupport(this);
 	
 
 	
@@ -25,8 +28,10 @@ public class AlarmaHogar {
 	}
 	
 	public void notificarCentralita() {
-		vista.setMensaje("Señal centralita");
-		vista.getSim().addTexto("Señal Centralita");
+		chsupp.firePropertyChange("texto","","Señal Centralita");
+		chsupp.firePropertyChange("textosim","","Señal Centralita");
+		//vista.setMensaje("Señal centralita");
+		//vista.getSim().addTexto("Señal Centralita");
 	}
 	
 	public void desactivarSensores() {
@@ -109,5 +114,8 @@ public class AlarmaHogar {
 	public int getIntervaloSalida() {
 		// TODO Auto-generated method stub
 		return this.intervaloSalida;
+	}
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		chsupp.addPropertyChangeListener(listener);
 	}
 }
