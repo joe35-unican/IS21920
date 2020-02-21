@@ -11,6 +11,7 @@ import javax.swing.border.LineBorder;
 
 import java.awt.Font;
 
+@SuppressWarnings("serial")
 public class PantallaAlarma extends JFrame {
 
 	private JFrame frmAlarmaHogar;

@@ -8,16 +8,19 @@ public class Piloto extends Thread{
 			this.start();
 	}
 
+		@SuppressWarnings("deprecation")
 		public void parpadear() {
 			this.resume();
 			
 		}
 		
+		@SuppressWarnings("deprecation")
 		public void encender() {
 			this.suspend();
 			context.getChsupp().firePropertyChange("piloto","",1);
 		}
 
+		@SuppressWarnings("deprecation")
 		public void apagar() {
 			this.suspend();
 			context.getChsupp().firePropertyChange("piloto","",0);
