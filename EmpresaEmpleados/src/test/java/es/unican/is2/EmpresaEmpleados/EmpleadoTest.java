@@ -35,6 +35,7 @@ public class EmpleadoTest {
 		}
 	}
 	
+	@Test
 	public void testDarDeAlta() {
 		try {
 			empleado = new Empleado("Luis Fernandez",LocalDate.now(),Empleado.categorias.DIRECTIVO);
@@ -46,6 +47,7 @@ public class EmpleadoTest {
 		}
 	}
 	
+	@Test
 	public void testSueldoBruto() {
 		try {
 			empleado = new Empleado("Luis Fernandez",LocalDate.now().minusYears(3),Empleado.categorias.DIRECTIVO);
