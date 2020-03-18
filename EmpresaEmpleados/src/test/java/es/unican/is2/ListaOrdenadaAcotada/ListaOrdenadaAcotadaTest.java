@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import es.unican.is2.listaOrdenadaAcotada.ListaOrdenadaAcotada;
 
 public class ListaOrdenadaAcotadaTest {
 
@@ -105,13 +104,12 @@ public class ListaOrdenadaAcotadaTest {
 			assertTrue(sut.remove(0)==null);
 			assertTrue(sut.remove(2)==null);
 			assertTrue(sut.remove(4)==null);
+			fail("No se lanzo excepcion al eliminar una posicion erronea");
 		}catch (IndexOutOfBoundsException e) {
 			
 		}
 		sut.add(8);
 		try {
-			assertTrue(sut.remove(2)==null);
-			assertTrue(sut.remove(4)==null);
 			assertTrue(sut.remove(0)==8);
 			assertTrue(sut.size()==0);
 		}catch (IndexOutOfBoundsException e) {
@@ -121,7 +119,6 @@ public class ListaOrdenadaAcotadaTest {
 		sut.add(1);
 		sut.add(10);
 		try {
-			assertTrue(sut.remove(4)==null);
 			assertTrue(sut.remove(2)==10);
 			assertTrue(sut.remove(0)==1);
 			assertTrue(sut.size()==1);
@@ -133,9 +130,9 @@ public class ListaOrdenadaAcotadaTest {
 		sut.add(10);
 		sut.add(300);
 		try {
-			assertTrue(sut.get(4)==300);
-			assertTrue(sut.get(2)==10);
-			assertTrue(sut.get(0)==1);
+			assertTrue(sut.remove(4)==300);
+			assertTrue(sut.remove(2)==10);
+			assertTrue(sut.remove(0)==1);
 			assertTrue(sut.size()==2);
 		}catch (IndexOutOfBoundsException e) {
 			
@@ -158,14 +155,12 @@ public class ListaOrdenadaAcotadaTest {
 	public void clearTest() {
 		sut.add(8);
 		sut.clear();
-		assertTrue(sut.get(0)==null);
 		assertTrue(sut.size()==0);
 		
 		sut.add(8);
 		sut.add(1);
 		sut.add(10);
 		sut.clear();
-		assertTrue(sut.get(2)==null);
 		assertTrue(sut.size()==0);
 		
 		sut.add(8);
@@ -173,7 +168,7 @@ public class ListaOrdenadaAcotadaTest {
 		sut.add(10);
 		sut.add(10);
 		sut.add(300);
-		assertTrue(sut.get(4)==null);
+		sut.clear();
 		assertTrue(sut.size()==0);
 	}
 }
