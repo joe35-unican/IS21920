@@ -17,7 +17,6 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.awt.event.ActionEvent;
-import javax.swing.DropMode;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
@@ -90,7 +89,7 @@ public class EmpleadosGUI extends JFrame {
 			    	sueldo = emp.sueldoBruto();
 			    	txtSueldo.setText(Double.toString(sueldo));
 			    } catch (DatoIncorrectoException e) {
-			    	e.printStackTrace();
+			    	txtSueldo.setText("Fecha Erronea!");
 			    }
 			    
 				

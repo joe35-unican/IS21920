@@ -14,6 +14,12 @@ public class ListaOrdenadaAcotadaTest {
 		this.sut=new ListaOrdenadaAcotada<Integer>(5);
 	}
 	
+	
+	@Test
+	public void constructor() {
+		ListaOrdenadaAcotada<Integer> sut2=new ListaOrdenadaAcotada<Integer>();
+		assertTrue(sut2.size()==0);
+	}
 	@Test
 	public void sizeTest() {
 		assertTrue(sut.size()==0);
