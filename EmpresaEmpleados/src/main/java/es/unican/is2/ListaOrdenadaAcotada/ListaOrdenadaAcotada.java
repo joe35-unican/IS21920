@@ -26,7 +26,10 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 		this(MAX_POR_OMISION);
 	}
 
-	public E get(int indice) {
+	public E get(int indice){
+		if (indice > ultimo) {
+			throw new IndexOutOfBoundsException();
+		}
 		return lista[indice];
 	}
 

@@ -31,17 +31,14 @@ public class ListaOrdenadaAcotadaTest {
 	public void getTest() {
 		//lista vacia
 		try {
-			assertTrue(sut.get(0)==null);
-			assertTrue(sut.get(2)==null);
-			assertTrue(sut.get(4)==null);
+			sut.get(4);
+			fail("No salto la excepcion caso get4-lista vacia");
 		}catch (IndexOutOfBoundsException e) {
 			
 		}
 		sut.add(8);
 		try {
 			assertTrue(sut.get(0)==8);
-			assertTrue(sut.get(2)==null);
-			assertTrue(sut.get(4)==null);
 		}catch (IndexOutOfBoundsException e) {
 			
 		}
@@ -50,7 +47,6 @@ public class ListaOrdenadaAcotadaTest {
 		try {
 			assertTrue(sut.get(0)==1);
 			assertTrue(sut.get(2)==10);
-			assertTrue(sut.get(4)==null);
 		}catch (IndexOutOfBoundsException e) {
 			
 		}

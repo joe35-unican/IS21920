@@ -9,14 +9,15 @@ public class Empleado {
 	private LocalDate fechaContratacion;
 	private boolean baja=false;
 	private categorias categoria;
-	enum categorias {DIRECTIVO,GESTOR,OBRERO}
+	public enum categorias {DIRECTIVO,GESTOR,OBRERO}
+	
 
-	public Empleado(String n, LocalDate f,categorias c) throws Exception{
+	public Empleado(String n, LocalDate f,categorias c) throws DatoIncorrectoException{
 		this.nombre=n;
 		if (f.isBefore(LocalDate.now()) | f.isEqual(LocalDate.now())) {
 			this.fechaContratacion=f;
 		}else {
-			throw new Exception();
+			throw new DatoIncorrectoException("Datos incorrectos");
 		}
 		this.categoria=c;
 	}
@@ -94,4 +95,9 @@ public class Empleado {
 		this.categoria = categoria;
 	}
 	
+	public class DatoIncorrectoException extends Exception {
+	    public DatoIncorrectoException(String msg) {
+	        super(msg);
+	    }
+	}
 }
