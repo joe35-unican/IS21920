@@ -27,7 +27,7 @@ public class ListaOrdenadaAcotada<E extends Comparable<E>> implements IListaAcot
 	}
 
 	public E get(int indice){
-		if (indice > ultimo) {
+		if (indice > ultimo | indice < 0) {
 			throw new IndexOutOfBoundsException();
 		}
 		return lista[indice];
