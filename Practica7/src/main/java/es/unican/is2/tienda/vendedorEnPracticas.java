@@ -8,7 +8,7 @@ public class vendedorEnPracticas extends Vendedor{
 	 * @param nombre
 	 * @param dni
 	 */
-	public vendedorEnPracticas(String nombre, String dni) {
+	public vendedorEnPracticas(String nombre, String dni) { //WMC=1 //Ccog=0
 		super(nombre, dni);
 	}
 
