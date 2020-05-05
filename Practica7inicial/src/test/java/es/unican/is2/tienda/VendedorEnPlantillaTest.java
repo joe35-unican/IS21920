@@ -31,16 +31,16 @@ public class VendedorEnPlantillaTest {
 	@Test
 	public void testAnhadeVenta() {
 		
-		sutJunior.anhadeVenta(200);
+		sutJunior.anhade(200);
 		assertEquals(sutJunior.getTotalVentas(), 200, 0);
 		
-		sutJunior.anhadeVenta(300);
+		sutJunior.anhade(300);
 		assertEquals(sutJunior.getTotalVentas(), 500, 0);
 		
-		sutSenior.anhadeVenta(300);
+		sutSenior.anhade(300);
 		assertEquals(sutSenior.getTotalVentas(), 300, 0);
 		
-		sutSenior.anhadeVenta(300);
+		sutSenior.anhade(300);
 		assertEquals(sutSenior.getTotalVentas(), 600, 0);
 		
 	}
@@ -48,18 +48,18 @@ public class VendedorEnPlantillaTest {
 	@Test
 	public void testSetTotalVentas() {
 		
-		sutJunior.setTotalVentas(2000);
+		sutJunior.setT(2000);
 		assertEquals(sutJunior.getTotalVentas(), 2000, 0);	
-		sutJunior.setTotalVentas(4000);
+		sutJunior.setT(4000);
 		assertEquals(sutJunior.getTotalVentas(), 4000, 0);	
-		sutJunior.setTotalVentas(0);
+		sutJunior.setT(0);
 		assertEquals(sutJunior.getTotalVentas(), 0, 0);
 		
-		sutSenior.setTotalVentas(4500);
+		sutSenior.setT(4500);
 		assertEquals(sutSenior.getTotalVentas(), 4500, 0);		
-		sutSenior.setTotalVentas(4000);
+		sutSenior.setT(4000);
 		assertEquals(sutSenior.getTotalVentas(), 4000, 0);
-		sutJunior.setTotalVentas(0);
+		sutJunior.setT(0);
 		assertEquals(sutJunior.getTotalVentas(), 0, 0);	
 		
 	}

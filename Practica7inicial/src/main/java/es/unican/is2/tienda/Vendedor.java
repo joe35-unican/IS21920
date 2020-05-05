@@ -12,7 +12,7 @@ public abstract class Vendedor {
 	
 	
 	// Valor total de las ventas mensuales realizadas por el vendedor
-	private double totalVentas;
+	private double t;
 	
 	public Vendedor(String nombre, String id) { //WMC=1 //Ccog=0
 		this.nombre = nombre;
@@ -42,7 +42,7 @@ public abstract class Vendedor {
 	 * @return Total de ventas
 	 */
 	public double getTotalVentas() { //WMC=1 //Ccog=0
-		return totalVentas;
+		return t;
 	}
 	
 	/**
@@ -50,16 +50,16 @@ public abstract class Vendedor {
 	 * Se utiliza para poder cargar los datos desde fichero
 	 * @param Total de ventas
 	 */
-	public void setTotalVentas(double totalVentas) { //WMC=1 //Ccog=0
-		this.totalVentas = totalVentas;
+	public void setT(double totalVentas) { //WMC=1 //Ccog=0
+		this.t = totalVentas;
 	}
 	
 	/**
 	 * Anhade una nueva venta al vendedor, actualizando su comision
 	 * @param importe de la venta
 	 */
-	public void anhadeVenta(double importe){ //WMC=1 //Ccog=0
-		totalVentas += importe;
+	public void anhade(double importe){ //WMC=1 //Ccog=0
+		t += importe;
 	}
 	
 	
