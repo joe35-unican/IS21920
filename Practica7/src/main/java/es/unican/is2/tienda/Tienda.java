@@ -99,7 +99,7 @@ public class Tienda {
 		if (v == null) {								//WMC=+1 //Ccog=+1
 			return false;
 		}
-		v.anhadeVenta(importe);
+		v.anhadeVentaComision(importe);
 		vuelcaDatos();
 		return true;
 	}

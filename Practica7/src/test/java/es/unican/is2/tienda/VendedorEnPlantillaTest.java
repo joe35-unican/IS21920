@@ -4,8 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.unican.is2.tienda.vendedorEnPracticas;
-
 
 public class VendedorEnPlantillaTest {
 	
@@ -31,16 +29,17 @@ public class VendedorEnPlantillaTest {
 	@Test
 	public void testAnhadeVenta() {
 		
-		sutJunior.anhadeVenta(200);
+		sutJunior.anhadeImporte(200);
+		System.out.println(sutJunior.getTotalVentas());
 		assertEquals(sutJunior.getTotalVentas(), 200, 0);
 		
-		sutJunior.anhadeVenta(300);
+		sutJunior.anhadeImporte(300);
 		assertEquals(sutJunior.getTotalVentas(), 500, 0);
 		
-		sutSenior.anhadeVenta(300);
+		sutSenior.anhadeImporte(300);
 		assertEquals(sutSenior.getTotalVentas(), 300, 0);
 		
-		sutSenior.anhadeVenta(300);
+		sutSenior.anhadeImporte(300);
 		assertEquals(sutSenior.getTotalVentas(), 600, 0);
 		
 	}

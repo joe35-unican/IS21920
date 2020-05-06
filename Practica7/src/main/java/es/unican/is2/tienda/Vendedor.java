@@ -58,7 +58,7 @@ public abstract class Vendedor {
 	 * Anhade una nueva venta al vendedor, actualizando su comision
 	 * @param importe de la venta
 	 */
-	public void anhadeVenta(double importe){ //WMC=1 //Ccog=0
+	public void anhadeImporte(double importe){ //WMC=1 //Ccog=0
 		totalVentas += importe;
 	}
 	
@@ -71,5 +71,8 @@ public abstract class Vendedor {
 		return (v.id.equals(id) && v.nombre.equals(nombre)); //Ccog=+1
 	}
 	
+	public void anhadeVentaComision(double importe) { //WMC=1 //CCog=0
+		this.anhadeImporte(importe);
+	}
 	
 }

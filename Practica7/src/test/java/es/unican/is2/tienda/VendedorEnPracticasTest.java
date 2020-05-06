@@ -35,13 +35,13 @@ public class VendedorEnPracticasTest {
 
 	@Test
 	public void testAnhadeVenta() {
-		sut.anhadeVenta(200);
+		sut.anhadeImporte(200);
 		assertTrue(sut.getTotalVentas() == 200.0);
 		
-		sut.anhadeVenta(300);
+		sut.anhadeImporte(300);
 		assertTrue(sut.getTotalVentas() == 500.0);	
 		
-		sut.anhadeVenta(0);
+		sut.anhadeImporte(0);
 		assertTrue(sut.getTotalVentas() == 500.0);
 		
 		

@@ -22,14 +22,16 @@ public class VendedorEnPlantilla extends Vendedor {
 		return tipo;
 	}
 	
-	public void anhadeVenta(double importe) {//WMC=3 //Ccog=1
+	public void anhadeVentaComision(double importe) {//WMC=3 //Ccog=1
 		double importeFinal = importe;
 			switch (tipo()) { //Ccog=+1
 			case JUNIOR:	//WMC=+1
 				importeFinal += importeFinal * PORCENTAJE_JUNIOR;
+				this.anhadeImporte(importeFinal);
 				break;
 			case SENIOR:	//WMC=+1
 				importeFinal += importeFinal * PORCENTAJE_SENIOR;
+				this.anhadeImporte(importeFinal);
 				break;
 			}
 		}
