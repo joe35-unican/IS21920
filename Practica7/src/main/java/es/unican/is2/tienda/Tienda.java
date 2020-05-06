@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -18,8 +20,6 @@ import java.util.Scanner;
  */
 public class Tienda {
 
-	private static final double PORCENTAJE_SENIOR = 0.01;
-	private static final double PORCENTAJE_JUNIOR = 0.005;
 	private LinkedList<Vendedor> lista = new LinkedList<Vendedor>();
 	private String direccion;
 	private String nombre;
@@ -58,7 +58,7 @@ public class Tienda {
 	 * @return true si el vendedor se ha anhadido 
 	 *         false si ya había un vendedor con el mismo id
 	 */
-	public boolean anhade(Vendedor nuevoVendedor) throws IOException { //WMC=2 Ccog=1
+	public boolean anhadeVendedor(Vendedor nuevoVendedor) throws IOException { //WMC=2 Ccog=1
 		Vendedor v = buscaVendedor(nuevoVendedor.getId());
 		if (v != null) {	//WMC=+1 //Ccog=+1
 			return false;
@@ -94,23 +94,12 @@ public class Tienda {
 	 *            Importe de la venta
 	 * @return true si se añade la venta false si no se encuentra el vendedor
 	 */
-	public boolean anhadeVenta(String id, double importe) throws IOException { //WMC=5 //Ccog=4
+	public boolean anhadeVenta(String id, double importe) throws IOException { //WMC=2 //Ccog=1
 		Vendedor v = buscaVendedor(id);
 		if (v == null) {								//WMC=+1 //Ccog=+1
 			return false;
 		}
-		double importeFinal = importe;
-		if (v instanceof VendedorEnPlantilla) {			//WMC=+1 //Ccog=+1
-			switch (((VendedorEnPlantilla) v).tipo()) {	//Ccog=+2
-			case JUNIOR:								//WMC=+1
-				importeFinal += importeFinal * PORCENTAJE_JUNIOR;
-				break;
-			case SENIOR:								//WMC=+1
-				importeFinal += importeFinal * PORCENTAJE_SENIOR;
-				break;
-			}
-		}
-		v.anhadeVenta(importeFinal);
+		v.anhadeVenta(importe);
 		vuelcaDatos();
 		return true;
 	}
@@ -206,7 +195,6 @@ public class Tienda {
 		in.next();
 		String id = in.next();
 		in.next();
-		System.out.println(nombre+" "+id);
 		double totalVentas = in.nextDouble();
 		
 		if (tipo!=null) {v = new VendedorEnPlantilla(nombre, id, tipo);} //WMC=+1 //Ccog=+1
@@ -214,4 +202,34 @@ public class Tienda {
 		v.setTotalVentas(totalVentas);
 		return v;
 	}
+	
+	public List<Vendedor> vendedorDelMes(){			//WMC=4 //Ccog=5
+		List<Vendedor> resultado = new LinkedList<Vendedor>();
+		double maxVentas = 0.0;
+		for (Vendedor v : lista) {					//WMC=+1 //Ccog=+1
+			if (v.getTotalVentas() > maxVentas) {		//WMC=+1 //Ccog=+2
+				maxVentas = v.getTotalVentas();
+				resultado.clear();
+				resultado.add(v);
+			} else if (v.getTotalVentas() == maxVentas) {//WMC=+1 //Ccog=+2
+				resultado.add(v);
+			}
+		}
+		return resultado;
+	}
+
+	public List<Vendedor> vendedoresOrd() {			//WMC=3 //Ccog=2
+		List<Vendedor> listaOrd = lista;
+		Collections.sort(listaOrd, new Comparator<Vendedor>() {
+			public int compare(Vendedor o1, Vendedor o2) {
+				if (o1.getTotalVentas()>o2.getTotalVentas())//WMC=+1 //Ccog=+1
+					return 1;
+				else if (o1.getTotalVentas()<o2.getTotalVentas())//WMC=+1 //Ccog=+1
+					return -1;
+				return 0;
+			}			
+		});
+		return listaOrd;
+	}
+	
 }
